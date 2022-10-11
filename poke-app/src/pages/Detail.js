@@ -13,6 +13,7 @@ export default function Detail({ route, navigation }) {
 
   useEffect(() => {
     dispatch(fetchPokemon(url));
+    search();
   }, []);
 
   useEffect(() => {
@@ -46,6 +47,17 @@ export default function Detail({ route, navigation }) {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const search = async () => {
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/bapuk`
+      );
+      console.log(response.data);
+    } catch (error) {
+      // console.log(error);
     }
   };
 
